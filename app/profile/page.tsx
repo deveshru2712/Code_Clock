@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 import React from "react";
 import { getSession } from "@/lib/auth/utils";
+import Image from "next/image";
 
 export default async function ProfilePage() {
   const session = await getSession();
@@ -9,5 +10,16 @@ export default async function ProfilePage() {
     redirect("/sign-in");
   }
 
-  return <div>profile page</div>;
+  return (
+    <div className="h-screen flex flex-col justify-center items-center">
+      <div>{session.user.email}</div>
+      <div>{session.user.id}</div>
+      <Image
+        src={session.user.image!}
+        height={45}
+        width={45}
+        alt="profile_image"
+      ></Image>
+    </div>
+  );
 }
