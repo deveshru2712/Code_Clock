@@ -8,16 +8,44 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { useRouter } from "next/navigation";
 import { Github } from "lucide-react";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "@/lib/auth/auth-client";
 import { useTheme } from "next-themes";
+import { toast } from "sonner";
+import Loader from "@/components/Loader";
 
 export default function SignUpPage() {
-  const handleGoogleSignUp = () => {
-    signIn("google", { callbackUrl: "/" });
-  };
-
+  const router = useRouter();
   const { theme } = useTheme();
+  const { data: session, isPending } = useSession();
+
+  // Show loader while session is being fetched
+  if (isPending) {
+    return (
+      <div className="h-screen flex justify-center items-center bg-red-400">
+        <Loader />
+      </div>
+    );
+  }
+
+  // Redirect if user is already authenticated
+  if (session?.user) {
+    router.push("/profile");
+    return null;
+  }
+
+  const handleSignUp = async () => {
+    try {
+      await signIn.social({
+        provider: "github",
+        callbackURL: "/",
+        newUserCallbackURL: "/profile",
+      });
+    } catch {
+      toast.error("Sign in failed. Please try again.");
+    }
+  };
 
   return (
     <div className="h-screen flex items-center justify-center">
@@ -25,7 +53,7 @@ export default function SignUpPage() {
         <CardHeader className="text-center">
           <CardTitle>Welcome</CardTitle>
           <CardDescription className="text-slate-950 dark:text-slate-200">
-            Continue with your Google account
+            Continue with your GitHub account
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -40,10 +68,10 @@ export default function SignUpPage() {
           <Button
             variant={theme === "dark" ? "default" : "outline"}
             className="w-full gap-2 hover:shadow-sm transition-shadow cursor-pointer"
-            onClick={handleGoogleSignUp}
+            onClick={handleSignUp}
           >
             <Github />
-            Continue with Github
+            Continue with GitHub
           </Button>
         </CardFooter>
       </Card>
