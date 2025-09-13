@@ -1,4 +1,4 @@
-import CodingStatusCard from "@/components/card/Card-One";
+import CodingStatusCard from "@/components/card/Card";
 
 export default function Home() {
   return (
