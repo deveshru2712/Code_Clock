@@ -1,11 +1,11 @@
 "use client";
 import React from "react";
-import { Button } from "./ui/button";
-import { Clock, Code2, Github } from "lucide-react";
+import { Button } from "../ui/button";
+import { Clock, Github } from "lucide-react";
 import Image from "next/image";
 import { useSession } from "@/lib/auth/auth-client";
 import { useTheme } from "next-themes";
-import Loader from "./Loader";
+import Loader from "../Loader";
 
 const CodingStatusCard = () => {
   const { data: session, isPending } = useSession();
@@ -27,7 +27,7 @@ const CodingStatusCard = () => {
 
   return (
     <>
-      <div className="px-6 py-4 w-full max-w-md rounded-2xl bg-white dark:bg-sidebar shadow border flex items-center gap-4 h-fit">
+      <div className="px-6 py-4 w-full max-w-md rounded-2xl bg-white dark:bg-sidebar border shadow flex items-center gap-4 h-fit">
         {/* Profile Image */}
         {session.user.image && (
           <Image
@@ -101,14 +101,10 @@ const CodingStatusCard = () => {
           </div>
 
           {/* Right Section - Working Status */}
-          <div className="flex flex-col items-center gap-1.5">
-            <div className="flex items-center justify-end w-full gap-1 text-[10px]">
-              <Code2 size={15} />
-              Working on
-            </div>
+          <div>
             <div className="shadow border rounded-xl px-3 py-1 flex items-center gap-2 text-sm">
-              <div className="flex gap-2">
-                <Button className="p-1.5 bg-accent">
+              <div className="flex gap-2.5">
+                <Button className="p-1.5 ">
                   <Image
                     src={"/vscode_image.webp"}
                     height={20}
@@ -121,7 +117,7 @@ const CodingStatusCard = () => {
                   <span className="text-slate-700 dark:text-slate-300 font-medium">
                     04:03:22
                   </span>
-                  <span className="flex gap-1 items-center text-slate-700 dark:text-slate-300">
+                  <span className="flex gap-1 items-center text-slate-700 dark:text-slate-300 text-xs">
                     <Clock size={13} />
                     Today
                   </span>

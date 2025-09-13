@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.className} antialiased bg-background overflow-hidden`}
+        className={`${geistSans.className} antialiased bg-background overflow-x-hidden`}
       >
         <ThemeProvider attribute="class" enableSystem disableTransitionOnChange>
           <Navbar />

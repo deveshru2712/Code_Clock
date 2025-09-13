@@ -1,8 +1,8 @@
-import CodingStatusCard from "@/components/CodingStatusCard";
+import CodingStatusCard from "@/components/card/Card-One";
 
 export default function Home() {
   return (
-    <div className="h-screen flex flex-col justify-center items-center">
+    <div className="h-screen flex items-center justify-center">
       <CodingStatusCard />
     </div>
   );
