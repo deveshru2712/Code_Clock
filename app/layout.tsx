@@ -1,11 +1,21 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import { Geist, Inter, Fredoka } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import Navbar from "@/components/main/Navbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+});
+
+const fredoka = Fredoka({
+  variable: "--font-fredoka",
   subsets: ["latin"],
 });
 
@@ -22,9 +32,14 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.className} antialiased bg-background overflow-x-hidden`}
+        className={`${geistSans.className} ${inter.variable} ${fredoka.variable} antialiased bg-background overflow-x-hidden`}
       >
-        <ThemeProvider attribute="class" enableSystem disableTransitionOnChange>
+        <ThemeProvider
+          defaultTheme="light"
+          attribute="class"
+          enableSystem
+          disableTransitionOnChange
+        >
           <Navbar />
           {children}
         </ThemeProvider>

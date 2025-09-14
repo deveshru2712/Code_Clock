@@ -4,7 +4,7 @@ import ModeToggle from "./ModeToggle";
 
 const Navbar = () => {
   return (
-    <div className="w-full px-12 py-3 fixed top-0 z-10 border-b shadow-sm">
+    <div className="w-full px-12 bg-background py-3 fixed top-0 z-10 border-b shadow-sm">
       <nav className="max-w-6xl mx-auto flex justify-between items-center">
         <Link href={"/"} className="text-lg font-semibold">
           Code Clock
