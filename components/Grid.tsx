@@ -1,11 +1,24 @@
 "use client";
 
 import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
 export default function GridUnderlay() {
-  const { theme } = useTheme();
+  const { theme, systemTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
-  const color = theme === "dark" ? "#18181b" : "#e7e5e4";
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return (
+      <div className="absolute inset-0 z-0" style={{ filter: `blur(20px)` }} />
+    );
+  }
+
+  const resolvedTheme = theme === "system" ? systemTheme : theme;
+  const color = resolvedTheme === "dark" ? "#27272a" : "#e7e5e4";
 
   return (
     <div
