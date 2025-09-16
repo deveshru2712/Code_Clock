@@ -1,11 +1,10 @@
 "use client";
-import GridUnderlay from "@/components/Grid";
+import LangCard from "@/components/LangCard";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { motion } from "motion/react";
 
 export default function Home() {
-  // Container variants for stagger animation
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -58,102 +57,78 @@ export default function Home() {
       scale: 0.95,
     },
   };
-
   return (
-    <div className="h-screen relative flex items-center justify-center overflow-hidden">
-      <GridUnderlay />
+    <div className="min-h-screen relative w-full overflow-hidden flex items-center justify-center px-4">
+      {/* Background circle */}
+      <div className="absolute inset-0 -z-10">
+        <div
+          className="relative w-[300px] top-1/3 left-1/2 -translate-x-1/2
+          md:w-[800px] md:left-1/2 md:-translate-x-1/2 md:top-1/3 md:-translate-y-1/2 lg:left-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 lg:top-1/4 border lg:w-[1000px] aspect-square border-slate-200 rounded-full"
+        />
+      </div>
 
-      <main className="relative z-10 flex items-center justify-center">
-        <motion.div
-          className="pt-12 md:pt-0 max-w-6xl mx-auto px-6 text-center"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
+      {/* main content */}
+
+      <motion.div
+        variants={containerVariants}
+        className="max-w-7xl w-full px-4 py-14 sm:px-8 md:px-12"
+      >
+        <main className="flex flex-col items-center justify-start text-center gap-6 md:gap-8">
           <motion.h1
             variants={itemVariants}
-            className="text-5xl md:text-6xl flex flex-wrap justify-center gap-2.5 items-center lg:text-5xl tracking-tight text-shadow-[0px_2px_0px_rgba(0,0,0,0.15)] dark:text-shadow-[0px_3px_1px_rgba(255,255,255,0.15)] font-semibold font-fredoka mb-8"
+            initial="hidden"
+            animate="visible"
+            className="flex flex-col items-center gap-3 md:gap-4 font-fredoka font-bold text-4xl sm:text-4xl md:text-5xl lg:text-6xl"
           >
-            <span>Code smarter,</span>
-
-            <motion.div
-              variants={popOutVariants}
-              initial="hidden"
-              animate="visible"
-              whileHover="hover"
-              whileTap="tap"
-            >
-              <Button className="bg-white hover:bg-gray-50 px-2.5 py-6 border shadow-lg dark:shadow-2xl transition-colors duration-300">
-                <Image
-                  src={"/vscode_image.webp"}
-                  height={55}
-                  width={35}
-                  alt="VS Code Editor"
-                />
-              </Button>
-            </motion.div>
-
-            <span>track better</span>
+            <span>Stay on track by</span>
+            <span className="text-white bg-[#70BFFF] rounded-md px-3 py-1.5 md:px-4 md:py-2 lg:px-6 lg:py-3 text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
+              Tracking time
+            </span>
           </motion.h1>
 
-          <span></span>
           <motion.p
             variants={itemVariants}
-            className="md:w-5/6 w-full text-lg  text-gray-600 dark:text-gray-300 max-w-4xl mx-auto mb-12 leading-relaxed font-inter"
+            initial="hidden"
+            animate="visible"
+            className="w-full md:w-2/3 lg:w-3/5 text-sm md:text-base lg:text-lg text-gray-600 dark:text-gray-300 leading-relaxed font-inter"
           >
             Transform your coding workflow with intelligent session tracking.
             Monitor your productivity, analyze your coding patterns, and unlock
             insights that help you become a more efficient developer.
           </motion.p>
 
+          <motion.button
+            variants={itemVariants}
+            initial="hidden"
+            animate="visible"
+            // size="lg"
+            className="bg-[#FF8058] hover:bg-[#e6734d] cursor-pointer text-white px-5 py-4 rounded-4xl text-lg sm:text-xl"
+          >
+            Get Tracking
+          </motion.button>
+
           <motion.div
             variants={itemVariants}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            initial="hidden"
+            animate="visible"
+            className="flex items-center gap-2"
           >
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button
-                size="lg"
-                className="bg-blue-500 hover:bg-blue-600/90 cursor-pointer text-white px-8 py-4 text-lg font-semibold rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300"
-              >
-                Install Extension
-              </Button>
-            </motion.div>
-
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button
-                variant="outline"
-                size="lg"
-                className="border-2 border-gray-300 dark:border-gray-600 px-8 py-4 text-lg font-semibold rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-300"
-              >
-                View Documentation
-              </Button>
-            </motion.div>
+            <span className="text-slate-700 text-sm sm:text-base">
+              Currently available for:
+            </span>
+            <Button className="bg-white hover:bg-gray-50 px-2 py-5 border shadow-lg dark:shadow-2xl transition-colors duration-300">
+              <Image
+                src={"/vscode_image.webp"}
+                height={45}
+                width={25}
+                alt="VS Code Editor"
+                className="h-6 w-auto sm:h-7"
+              />
+            </Button>
           </motion.div>
-        </motion.div>
-      </main>
+        </main>
 
-      {/* Floating icons container with stagger */}
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-        className="absolute inset-0 z-20"
-      >
-        <motion.div
-          variants={popOutVariants}
-          initial="hidden"
-          animate="visible"
-          whileHover="hover"
-          whileTap="tap"
-          className="absolute top-1/5 left-5 md:left-12 lg:top-1/4 lg:left-1/6"
-        >
-          <Image
-            src={"https://skillicons.dev/icons?i=js"}
-            height={64}
-            width={64}
-            alt="JavaScript"
-          />
-        </motion.div>
+        {/* floating button */}
 
         <motion.div
           variants={popOutVariants}
@@ -161,13 +136,12 @@ export default function Home() {
           animate="visible"
           whileHover="hover"
           whileTap="tap"
-          className="absolute bottom-1/6 left-8 md:bottom-28 md:left-1/4 lg:bottom-32"
+          className="absolute top-1/2 left-1/6 -translate-x-1/2 -translate-y-full"
         >
-          <Image
+          <LangCard
             src={"https://skillicons.dev/icons?i=ts"}
-            height={64}
-            width={64}
-            alt="TypeScript"
+            time={"10min"}
+            title="TypeScript"
           />
         </motion.div>
 
@@ -177,29 +151,72 @@ export default function Home() {
           animate="visible"
           whileHover="hover"
           whileTap="tap"
-          className="absolute top-1/5 right-5 md:right-12 lg:top-1/4 lg:right-1/6"
+          className="absolute top-1/2 right-1/6 translate-x-1/2 -translate-y-full"
         >
-          <Image
-            src={"https://skillicons.dev/icons?i=tailwind"}
-            height={64}
-            width={64}
-            alt="Tailwind CSS"
-          />
-        </motion.div>
-
-        <motion.div
-          variants={popOutVariants}
-          initial="hidden"
-          animate="visible"
-          whileHover="hover"
-          whileTap="tap"
-          className="absolute bottom-1/6 right-8 md:bottom-28 md:right-1/4 lg:bottom-32"
-        >
-          <Image
+          <LangCard
             src={"https://skillicons.dev/icons?i=go"}
-            height={64}
-            width={64}
-            alt="Go"
+            time={"17min"}
+            title="Go"
+          />
+        </motion.div>
+
+        <motion.div
+          variants={popOutVariants}
+          initial="hidden"
+          animate="visible"
+          whileHover="hover"
+          whileTap="tap"
+          className="absolute top-1/4 left-1/12 translate-x-1/2 -translate-y-full"
+        >
+          <LangCard
+            src={"https://skillicons.dev/icons?i=js"}
+            time={"13min"}
+            title="JavaScript"
+          />
+        </motion.div>
+
+        <motion.div
+          variants={popOutVariants}
+          initial="hidden"
+          animate="visible"
+          whileHover="hover"
+          whileTap="tap"
+          className="absolute top-1/4 right-1/12 -translate-x-1/2 -translate-y-full"
+        >
+          <LangCard
+            src={"https://skillicons.dev/icons?i=tailwind"}
+            time={"45min"}
+            title="Tailwind CSS"
+          />
+        </motion.div>
+
+        <motion.div
+          variants={popOutVariants}
+          initial="hidden"
+          animate="visible"
+          whileHover="hover"
+          whileTap="tap"
+          className="absolute top-2/3 left-1/4 -translate-x-1/2 -translate-y-1/5"
+        >
+          <LangCard
+            src={"https://skillicons.dev/icons?i=cpp"}
+            time={"15min"}
+            title="C++"
+          />
+        </motion.div>
+
+        <motion.div
+          variants={popOutVariants}
+          initial="hidden"
+          animate="visible"
+          whileHover="hover"
+          whileTap="tap"
+          className="absolute top-2/3 right-1/6 -translate-x-full -translate-y-1/5"
+        >
+          <LangCard
+            src={"https://skillicons.dev/icons?i=python"}
+            time={"25min"}
+            title="Python"
           />
         </motion.div>
       </motion.div>
