@@ -11,13 +11,11 @@ import {
 import { useRouter } from "next/navigation";
 import { Github } from "lucide-react";
 import { signIn, useSession } from "@/lib/auth/auth-client";
-import { useTheme } from "next-themes";
 import { toast } from "sonner";
 import Loader from "@/components/Loader";
 
 export default function SignUpPage() {
   const router = useRouter();
-  const { theme } = useTheme();
   const { data: session, isPending } = useSession();
 
   // Show loader while session is being fetched
@@ -66,7 +64,7 @@ export default function SignUpPage() {
         </CardContent>
         <CardFooter className="flex-col gap-3">
           <Button
-            variant={theme === "dark" ? "default" : "outline"}
+            // variant={theme === "dark" ? "default" : "outline"}
             className="w-full gap-2 hover:shadow-sm transition-shadow cursor-pointer"
             onClick={handleSignUp}
           >
