@@ -7,7 +7,6 @@ import { useSession } from "@/lib/auth/auth-client";
 import { useTheme } from "next-themes";
 import Loader from "../Loader";
 import LiveStatus from "../main/LiveStatus";
-import InsanityMeter from "../main/InsanityMeter";
 
 export default function CodingStatusCard() {
   const { data: session, isPending } = useSession();
