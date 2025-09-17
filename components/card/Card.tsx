@@ -4,13 +4,11 @@ import { Button } from "@/components/ui/button";
 import { Github } from "lucide-react";
 import Image from "next/image";
 import { useSession } from "@/lib/auth/auth-client";
-import { useTheme } from "next-themes";
 import Loader from "../Loader";
 import LiveStatus from "../main/LiveStatus";
 
 export default function CodingStatusCard() {
   const { data: session, isPending } = useSession();
-  const { theme } = useTheme();
 
   // Handle loading state
   if (isPending) {
@@ -63,7 +61,7 @@ export default function CodingStatusCard() {
                     size="sm"
                     className="h-9 w-9 rounded-full border-gray-200/60 dark:border-gray-700/60 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm hover:bg-blue-50 dark:hover:bg-blue-900/30 hover:border-blue-300 dark:hover:border-blue-600 transition-all duration-300 hover:scale-110"
                   >
-                    {theme === "dark" ? (
+                    {/* {theme === "dark" ? (
                       <Image
                         src="/twitter_light_mode.png"
                         alt="Twitter icon"
@@ -79,7 +77,7 @@ export default function CodingStatusCard() {
                         width={16}
                         className="cursor-pointer"
                       />
-                    )}
+                    )} */}
                   </Button>
                   <div className="absolute top-10 z-10 left-1/2 transform -translate-x-1/2 px-3 py-1 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 text-xs rounded-lg opacity-0 group-hover/tooltip:opacity-100 transition-all duration-200 pointer-events-none whitespace-nowrap shadow-lg">
                     Twitter

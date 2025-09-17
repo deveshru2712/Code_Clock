@@ -64,7 +64,6 @@ export default function SignUpPage() {
         </CardContent>
         <CardFooter className="flex-col gap-3">
           <Button
-            // variant={theme === "dark" ? "default" : "outline"}
             className="w-full gap-2 hover:shadow-sm transition-shadow cursor-pointer"
             onClick={handleSignUp}
           >
