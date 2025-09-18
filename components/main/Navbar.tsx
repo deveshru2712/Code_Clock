@@ -1,14 +1,15 @@
 import Link from "next/link";
 import React from "react";
 import { Button } from "../ui/button";
+import ModeToggle from "../ModeToggle";
 
 const Navbar = () => {
   return (
-    <div className="w-full px-4 md:px-8 lg:px-12 bg-white/95 backdrop-blur-sm py-3 fixed top-0 z-50 border-b border-gray-100 shadow-sm">
+    <div className="w-full px-4 md:px-8 lg:px-12 bg-background/95 backdrop-blur-sm py-3 fixed top-0 z-50 border-b border-gray-100 dark:border-slate-800 shadow-sm">
       <nav className="max-w-6xl mx-auto flex justify-between items-center">
         <Link
           href={"/"}
-          className="flex items-center text-xl font-bold text-gray-900 transition-all hover:scale-105"
+          className="flex items-center text-xl font-bold transition-all hover:scale-105"
         >
           <div className="mr-2 bg-orange-500 text-white p-1 rounded-md">
             <svg
@@ -27,7 +28,7 @@ const Navbar = () => {
           Code Clock
         </Link>
 
-        <div className="hidden md:flex items-center gap-8 font-medium text-gray-700">
+        <div className="hidden md:flex items-center gap-8 font-medium text-gray-700 dark:text-slate-200">
           <a
             href="#howItWorks"
             className="transition-colors hover:text-orange-500 relative group"
@@ -45,12 +46,13 @@ const Navbar = () => {
         </div>
 
         <div className="flex items-center gap-3">
-          <Button className="ring-1  ring-orange-400 bg-white hover:bg-gray-50 font-medium text-gray-800 cursor-pointer transition-all duration-200 px-5 py-2 rounded-md">
+          <Button className="ring-1  ring-orange-400 hover:bg-background/80 bg-background dark:text-slate-300 hover:dark:bg-slate-800 font-medium text-gray-800 cursor-pointer transition-all duration-200 px-5 py-2 rounded-md">
             Login
           </Button>
           <Button className="bg-orange-500 hover:scale-95 hover:bg-orange-500 cursor-pointer duration-300 text-white font-medium transition-all px-5 py-2 rounded-md shadow-sm hover:shadow-md">
             Install Now
           </Button>
+          <ModeToggle />
         </div>
       </nav>
     </div>

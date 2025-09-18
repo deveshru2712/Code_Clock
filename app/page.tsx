@@ -1,8 +1,8 @@
 "use client";
-import LangCard from "@/components/LangCard";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { motion } from "motion/react";
+import Grid from "@/components/Grid";
 
 export default function Home() {
   const containerVariants = {
@@ -57,27 +57,20 @@ export default function Home() {
       scale: 0.95,
     },
   };
+
   return (
     <div className="min-h-screen relative w-full overflow-hidden flex items-center justify-center px-4">
-      {/* Background circle */}
-      <div className="absolute inset-0 -z-10">
-        <div
-          className="relative w-[300px] top-1/3 left-1/2 -translate-x-1/2
-          md:w-[800px] md:left-1/2 md:-translate-x-1/2 md:top-1/3 md:-translate-y-1/2 lg:left-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 lg:top-1/4 border lg:w-[1000px] aspect-square border-slate-200 rounded-full"
-        />
-      </div>
-
       {/* main content */}
-
+      <Grid />
       <motion.div
         variants={containerVariants}
-        className="max-w-7xl w-full px-4 py-14 sm:px-8 md:px-12"
+        initial="hidden"
+        animate="visible"
+        className="max-w-7xl w-full px-4 py-14 sm:px-8 md:px-12 relative z-10"
       >
         <main className="flex flex-col items-center justify-start text-center gap-6 md:gap-8">
           <motion.h1
             variants={itemVariants}
-            initial="hidden"
-            animate="visible"
             className="flex flex-col items-center gap-3 md:gap-4 font-fredoka font-bold text-4xl sm:text-4xl md:text-5xl lg:text-6xl"
           >
             <span>Stay on track by</span>
@@ -88,8 +81,6 @@ export default function Home() {
 
           <motion.p
             variants={itemVariants}
-            initial="hidden"
-            animate="visible"
             className="w-full md:w-2/3 lg:w-3/5 text-sm md:text-base lg:text-lg text-gray-600 dark:text-gray-300 leading-relaxed font-inter"
           >
             Transform your coding workflow with intelligent session tracking.
@@ -99,9 +90,6 @@ export default function Home() {
 
           <motion.button
             variants={itemVariants}
-            initial="hidden"
-            animate="visible"
-            // size="lg"
             className="bg-[#FF8058] hover:bg-[#e6734d] cursor-pointer text-white px-5 py-4 rounded-4xl text-lg sm:text-xl"
           >
             Get Tracking
@@ -109,8 +97,6 @@ export default function Home() {
 
           <motion.div
             variants={itemVariants}
-            initial="hidden"
-            animate="visible"
             className="flex items-center gap-2"
           >
             <span className="text-slate-700 text-sm sm:text-base">
@@ -127,98 +113,6 @@ export default function Home() {
             </Button>
           </motion.div>
         </main>
-
-        {/* floating button */}
-
-        <motion.div
-          variants={popOutVariants}
-          initial="hidden"
-          animate="visible"
-          whileHover="hover"
-          whileTap="tap"
-          className="absolute top-1/2 left-1/6 -translate-x-1/2 -translate-y-full"
-        >
-          <LangCard
-            src={"https://skillicons.dev/icons?i=ts"}
-            time={"10min"}
-            title="TypeScript"
-          />
-        </motion.div>
-
-        <motion.div
-          variants={popOutVariants}
-          initial="hidden"
-          animate="visible"
-          whileHover="hover"
-          whileTap="tap"
-          className="absolute top-1/2 right-1/6 translate-x-1/2 -translate-y-full"
-        >
-          <LangCard
-            src={"https://skillicons.dev/icons?i=go"}
-            time={"17min"}
-            title="Go"
-          />
-        </motion.div>
-
-        <motion.div
-          variants={popOutVariants}
-          initial="hidden"
-          animate="visible"
-          whileHover="hover"
-          whileTap="tap"
-          className="absolute top-1/4 left-1/12 translate-x-1/2 -translate-y-full"
-        >
-          <LangCard
-            src={"https://skillicons.dev/icons?i=js"}
-            time={"13min"}
-            title="JavaScript"
-          />
-        </motion.div>
-
-        <motion.div
-          variants={popOutVariants}
-          initial="hidden"
-          animate="visible"
-          whileHover="hover"
-          whileTap="tap"
-          className="absolute top-1/4 right-1/12 -translate-x-1/2 -translate-y-full"
-        >
-          <LangCard
-            src={"https://skillicons.dev/icons?i=tailwind"}
-            time={"45min"}
-            title="Tailwind CSS"
-          />
-        </motion.div>
-
-        <motion.div
-          variants={popOutVariants}
-          initial="hidden"
-          animate="visible"
-          whileHover="hover"
-          whileTap="tap"
-          className="absolute top-2/3 left-1/4 -translate-x-1/2 -translate-y-1/5"
-        >
-          <LangCard
-            src={"https://skillicons.dev/icons?i=cpp"}
-            time={"15min"}
-            title="C++"
-          />
-        </motion.div>
-
-        <motion.div
-          variants={popOutVariants}
-          initial="hidden"
-          animate="visible"
-          whileHover="hover"
-          whileTap="tap"
-          className="absolute top-2/3 right-1/6 -translate-x-full -translate-y-1/5"
-        >
-          <LangCard
-            src={"https://skillicons.dev/icons?i=python"}
-            time={"25min"}
-            title="Python"
-          />
-        </motion.div>
       </motion.div>
     </div>
   );

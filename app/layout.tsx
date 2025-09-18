@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Inter, Fredoka } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/main/Navbar";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,8 +34,15 @@ export default function RootLayout({
       <body
         className={`${geistSans.className} ${inter.variable} ${fredoka.variable} antialiased bg-background overflow-x-hidden`}
       >
-        <Navbar />
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Navbar />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
