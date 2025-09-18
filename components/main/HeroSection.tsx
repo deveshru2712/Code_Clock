@@ -62,7 +62,7 @@ export default function HeroSection() {
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      className="max-w-7xl w-full px-4 py-14 sm:px-8 md:px-12 relative z-10"
+      className="max-w-7xl w-full px-4 sm:px-8 md:px-12 relative z-10"
     >
       <main className="flex flex-col items-center justify-start text-center gap-6 md:gap-8">
         <motion.h1
