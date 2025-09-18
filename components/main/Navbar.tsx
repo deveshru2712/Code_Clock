@@ -1,7 +1,9 @@
+"use client";
 import Link from "next/link";
 import React from "react";
 import { Button } from "../ui/button";
 import ModeToggle from "../ModeToggle";
+import { redirect } from "next/navigation";
 
 const Navbar = () => {
   return (
@@ -46,13 +48,18 @@ const Navbar = () => {
         </div>
 
         <div className="flex items-center gap-3">
-          <Button className="ring-1  ring-orange-400 hover:bg-background/80 bg-background dark:text-slate-300 hover:dark:bg-slate-800 font-medium text-gray-800 cursor-pointer transition-all duration-200 px-5 py-2 rounded-md">
+          <Button
+            onClick={() => redirect("/sign-in")}
+            className="ring-1  ring-orange-400 hover:bg-background/80 bg-background dark:text-slate-300 hover:dark:bg-slate-800 font-medium text-gray-800 cursor-pointer transition-all duration-200 px-5 py-2 rounded-md"
+          >
             Login
           </Button>
           <Button className="bg-orange-500 hover:scale-95 hover:bg-orange-500 cursor-pointer duration-300 text-white font-medium transition-all px-5 py-2 rounded-md shadow-sm hover:shadow-md">
             Install Now
           </Button>
-          <ModeToggle />
+          <div className="hidden md:flex">
+            <ModeToggle />
+          </div>
         </div>
       </nav>
     </div>

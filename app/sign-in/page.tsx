@@ -21,7 +21,7 @@ export default function SignUpPage() {
   // Show loader while session is being fetched
   if (isPending) {
     return (
-      <div className="h-screen flex justify-center items-center bg-red-400">
+      <div className="h-screen flex justify-center items-center">
         <Loader />
       </div>
     );

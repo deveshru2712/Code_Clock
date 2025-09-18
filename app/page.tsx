@@ -99,16 +99,16 @@ export default function Home() {
             variants={itemVariants}
             className="flex items-center gap-2"
           >
-            <span className="text-slate-700 text-sm sm:text-base">
+            <span className="text-slate-700 dark:text-slate-300 text-sm sm:text-base">
               Currently available for:
             </span>
-            <Button className="bg-white hover:bg-gray-50 px-2 py-5 border shadow-lg dark:shadow-2xl transition-colors duration-300">
+            <Button className="bg-white hover:bg-gray-50 px-2 py-3.5 border shadow-lg dark:shadow-2xl transition-colors duration-300">
               <Image
                 src={"/vscode_image.webp"}
-                height={45}
-                width={25}
+                height={35}
+                width={35}
                 alt="VS Code Editor"
-                className="h-6 w-auto sm:h-7"
+                className="h-6 w-auto"
               />
             </Button>
           </motion.div>
