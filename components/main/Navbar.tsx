@@ -3,10 +3,11 @@ import Link from "next/link";
 import React from "react";
 import { Button } from "../ui/button";
 import ModeToggle from "../ModeToggle";
-import { redirect } from "next/navigation";
+import { redirect, usePathname } from "next/navigation";
 import { useSession } from "@/lib/auth/auth-client";
 
 const Navbar = () => {
+  const pathname = usePathname();
   const { data: session, isPending } = useSession();
   return (
     <div className="w-full px-4 md:px-8 lg:px-12 bg-background/95 backdrop-blur-sm py-3 fixed top-0 z-50 border-b border-gray-100 dark:border-slate-800 shadow-sm">
@@ -50,10 +51,12 @@ const Navbar = () => {
         </div>
 
         <div className="flex items-center gap-3">
-          {!session && !isPending && (
+          {pathname != "/sign-in" && (
             <Button
               onClick={() => redirect("/sign-in")}
-              className="ring-1  ring-orange-400 hover:bg-background/80 bg-background dark:text-slate-300 hover:dark:bg-slate-800 font-medium text-gray-800 cursor-pointer transition-all duration-200 px-5 py-2 rounded-md"
+              className={`ring-1 ring-orange-400 hover:bg-orange-400 hover:ring-white border-none bg-background dark:text-slate-300 dark:hover:bg-orange-400 dark:hover:text-white font-medium text-gray-800 cursor-pointer transition-all duration-300 px-5 py-2 rounded-md ${
+                !session && !isPending ? "opacity-100" : "opacity-0 hidden"
+              }`}
             >
               Login
             </Button>
