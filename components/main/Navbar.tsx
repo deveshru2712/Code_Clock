@@ -4,8 +4,10 @@ import React from "react";
 import { Button } from "../ui/button";
 import ModeToggle from "../ModeToggle";
 import { redirect } from "next/navigation";
+import { useSession } from "@/lib/auth/auth-client";
 
 const Navbar = () => {
+  const { data: session, isPending } = useSession();
   return (
     <div className="w-full px-4 md:px-8 lg:px-12 bg-background/95 backdrop-blur-sm py-3 fixed top-0 z-50 border-b border-gray-100 dark:border-slate-800 shadow-sm">
       <nav className="max-w-6xl mx-auto flex justify-between items-center">
@@ -48,16 +50,20 @@ const Navbar = () => {
         </div>
 
         <div className="flex items-center gap-3">
-          <Button
-            onClick={() => redirect("/sign-in")}
-            className="ring-1  ring-orange-400 hover:bg-background/80 bg-background dark:text-slate-300 hover:dark:bg-slate-800 font-medium text-gray-800 cursor-pointer transition-all duration-200 px-5 py-2 rounded-md"
-          >
-            Login
-          </Button>
+          {!session && !isPending && (
+            <Button
+              onClick={() => redirect("/sign-in")}
+              className="ring-1  ring-orange-400 hover:bg-background/80 bg-background dark:text-slate-300 hover:dark:bg-slate-800 font-medium text-gray-800 cursor-pointer transition-all duration-200 px-5 py-2 rounded-md"
+            >
+              Login
+            </Button>
+          )}
           <Button className="bg-orange-500 hover:scale-95 hover:bg-orange-500 cursor-pointer duration-300 text-white font-medium transition-all px-5 py-2 rounded-md shadow-sm hover:shadow-md">
             Install Now
           </Button>
-          <div className="hidden md:flex">
+          <div
+            className={`${session && !isPending ? "flex" : "hidden md:flex"}`}
+          >
             <ModeToggle />
           </div>
         </div>

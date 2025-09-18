@@ -12,6 +12,15 @@ const auth = betterAuth({
       clientSecret: process.env.AUTH_GITHUB_SECRET as string,
     },
   },
+  advanced: {
+    cookiePrefix: "Codeclock",
+  },
+  session: {
+    cookieCache: {
+      enabled: true,
+      maxAge: 60 * 60 * 24 * 30,
+    },
+  },
 });
 
 export default auth;

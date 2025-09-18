@@ -37,7 +37,7 @@ export default function SignUpPage() {
     try {
       await signIn.social({
         provider: "github",
-        callbackURL: "/",
+        callbackURL: "/profile",
         newUserCallbackURL: "/profile",
       });
     } catch {
