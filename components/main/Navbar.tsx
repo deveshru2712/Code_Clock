@@ -2,7 +2,7 @@
 import Link from "next/link";
 import React from "react";
 import { Button } from "../ui/button";
-import ModeToggle from "../ModeToggle";
+// import ModeToggle from "../ModeToggle";
 import { redirect, usePathname } from "next/navigation";
 import { useSession } from "@/lib/auth/auth-client";
 
@@ -64,11 +64,11 @@ const Navbar = () => {
           <Button className="bg-orange-500 hover:scale-95 hover:bg-orange-500 cursor-pointer duration-300 text-white font-medium transition-all px-5 py-2 rounded-md shadow-sm hover:shadow-md">
             Install Now
           </Button>
-          <div
+          {/* <div
             className={`${session && !isPending ? "flex" : "hidden md:flex"}`}
           >
             <ModeToggle />
-          </div>
+          </div> */}
         </div>
       </nav>
     </div>
