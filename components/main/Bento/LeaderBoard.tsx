@@ -1,5 +1,5 @@
 import React from "react";
-import { Medal, Trophy } from "lucide-react";
+import { Crown, Medal, Trophy } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 
 const Leaderboard = () => {
@@ -12,10 +12,10 @@ const Leaderboard = () => {
   ];
 
   return (
-    <div className="max-w-md min-w-sm h-fit mx-auto border py-2 px-5 rounded-md shadow-md">
-      <h1 className="text-normal font-medium flex items-center gap-1.5">
+    <div className="max-w-md min-w-sm h-fit mx-auto border py-2 px-5 rounded-md shadow-sm">
+      <h1 className="text-normal font-medium flex items-start gap-1.5">
         <span className="text-lg">Leaderboard</span>
-        <Trophy size={24} />
+        <Trophy size={20} color="#fbbf24" className="pt-0.5" />
       </h1>
       <div className="mt-4">
         <div className="flex justify-between font-medium items-center">
@@ -62,26 +62,37 @@ function Row({ rank, name, time, isLast }: RowProps) {
     }
   };
 
-  // Todo: give a special glow to the ranker
+  const glowBasedOnRank = (rank: number) => {
+    if (rank == 1) {
+      return "shadow shadow-[0px_1px_5px_0px_#fbbf24]";
+    } else if (rank == 2) {
+      return "shadow shadow-[0px_1px_5px_0px_#9ca3af]";
+    } else if (rank == 3) {
+      return "shadow shadow-[0px_0px_5px_0px_#ea580c]";
+    } else {
+      return "shadow-sm border";
+    }
+  };
 
   return (
     <>
       <div
-        className={`flex items-center shadow px-3 py-1.5 rounded-md justify-between pt-1 text-center ${
-          rank == 1 ? "shadow-[0px_1px_5px_0px_#fbbf24]" : ""
-        } ${rank == 2 ? "shadow-[0px_1px_5px_0px_#9ca3af]" : ""} ${
-          rank == 3 ? "shadow-[0px_0px_5px_0px_#ea580c]" : ""
-        }
-`}
+        className={`hover:scale-105 duration-300 transition-all flex items-center px-3 py-1.5 rounded-md justify-between pt-1 text-center ${glowBasedOnRank(
+          rank
+        )}`}
       >
         <div className="flex-1 flex items-center text-left">
-          <Medal size={18} color={medalColorBasedOnRank(rank)} />
+          {rank == 1 ? (
+            <Crown size={18} color={medalColorBasedOnRank(rank)} />
+          ) : (
+            <Medal size={18} color={medalColorBasedOnRank(rank)} />
+          )}
           {rank}
         </div>
 
         <span className="flex-1 text-center">{name}</span>
         <span className="flex-1 text-right">
-          <span className="text-xs text-slate-800 px-1 py-0.5 rounded-2xl bg-black/10">
+          <span className="text-xs text-slate-50 px-1.5 py-0.5 rounded-2xl bg-orange-500">
             {time}
           </span>
         </span>
