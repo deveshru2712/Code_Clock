@@ -12,12 +12,12 @@ const Leaderboard = () => {
   ];
 
   return (
-    <div className="max-w-md min-w-sm h-fit mx-auto border py-2 px-5 rounded-md shadow-sm">
+    <div className="max-w-md min-w-sm h-fit border py-2 px-5 rounded-md shadow-sm">
       <h1 className="text-normal font-medium flex items-start gap-1.5">
-        <span className="text-lg">Leaderboard</span>
+        <span className="text-lg">Top Performers</span>
         <Trophy size={20} color="#fbbf24" className="pt-0.5" />
       </h1>
-      <div className="mt-4">
+      <div>
         <div className="flex justify-between font-medium items-center">
           <span>Rank</span>
           <span>Name</span>
