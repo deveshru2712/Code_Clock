@@ -26,43 +26,12 @@ export default function HeroSection() {
     },
   };
 
-  // Pop out animation for icons
-  const popOutVariants = {
-    hidden: {
-      opacity: 0,
-      scale: 0.8,
-      filter: "blur(10px)",
-    },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      filter: "blur(0px)",
-      transition: {
-        type: "spring" as const,
-        stiffness: 300,
-        damping: 15,
-        delay: 0.3,
-      },
-    },
-    hover: {
-      scale: 1.05,
-      rotate: 2,
-      transition: {
-        type: "spring" as const,
-        stiffness: 400,
-        damping: 10,
-      },
-    },
-    tap: {
-      scale: 0.95,
-    },
-  };
   return (
     <motion.div
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      className="max-w-7xl w-full px-4 sm:px-8 md:px-12 relative z-10"
+      className="max-w-7xl flex justify-center items-center w-full h-screen px-4 sm:px-8 md:px-12 relative z-10"
     >
       <main className="flex flex-col items-center justify-start text-center gap-6 md:gap-8">
         <motion.h1

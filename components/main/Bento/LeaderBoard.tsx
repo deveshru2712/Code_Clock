@@ -2,7 +2,7 @@ import React from "react";
 import { Crown, Medal, Trophy } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 
-const Leaderboard = () => {
+export default function Leaderboard() {
   const users = [
     { name: "Joanna", time: "233min" },
     { name: "Mark", time: "89min" },
@@ -12,7 +12,7 @@ const Leaderboard = () => {
   ];
 
   return (
-    <div className="max-w-md min-w-sm bg-slate-50 h-fit border py-2 px-5 rounded-2xl shadow-sm">
+    <div className="max-w-md h-fit min-w-sm bg-slate-50 border py-2 px-5 rounded-2xl shadow-sm">
       <h1 className="text-normal font-medium flex items-start gap-1.5">
         <span className="text-lg">Top Performers</span>
         <Trophy size={20} color="#fbbf24" className="pt-0.5" />
@@ -38,9 +38,7 @@ const Leaderboard = () => {
       </div>
     </div>
   );
-};
-
-export default Leaderboard;
+}
 
 interface RowProps {
   rank: number;

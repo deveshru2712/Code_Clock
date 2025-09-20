@@ -40,7 +40,7 @@ const chartConfig = {
 
 export function DefaultMultipleBarChart() {
   return (
-    <Card>
+    <Card className="bg-slate-100">
       <CardHeader>
         <CardTitle>
           Bar Chart - Multiple{" "}
@@ -52,7 +52,7 @@ export function DefaultMultipleBarChart() {
             <span>-5.2%</span>
           </Badge>
         </CardTitle>
-        <CardDescription>January - June 2025</CardDescription>
+        <CardDescription>September 2025</CardDescription>
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig}>
