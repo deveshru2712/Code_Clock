@@ -57,7 +57,7 @@ const chartConfig = {
 export function RoundedPieChart() {
   return (
     <Card className="flex flex-col">
-      <CardHeader className="items-center pb-0">
+      <CardHeader className="items-center">
         <CardTitle>
           Programming Languages Usage
           <Badge
@@ -88,7 +88,7 @@ export function RoundedPieChart() {
               paddingAngle={4}
             >
               <LabelList
-                dataKey="time"
+                dataKey="language"
                 stroke="none"
                 fontSize={12}
                 fontWeight={500}

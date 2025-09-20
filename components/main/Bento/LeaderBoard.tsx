@@ -12,7 +12,7 @@ const Leaderboard = () => {
   ];
 
   return (
-    <div className="max-w-md min-w-sm h-fit border py-2 px-5 rounded-md shadow-sm">
+    <div className="max-w-md min-w-sm bg-slate-50 h-fit border py-2 px-5 rounded-2xl shadow-sm">
       <h1 className="text-normal font-medium flex items-start gap-1.5">
         <span className="text-lg">Top Performers</span>
         <Trophy size={20} color="#fbbf24" className="pt-0.5" />
@@ -70,14 +70,16 @@ function Row({ rank, name, time, isLast }: RowProps) {
     } else if (rank == 3) {
       return "shadow shadow-[0px_0px_5px_0px_#ea580c]";
     } else {
-      return "shadow-sm border";
+      return "shadow";
     }
   };
 
   return (
     <>
       <div
-        className={`hover:scale-105 duration-300 transition-all flex items-center px-3 py-1.5 rounded-md justify-between pt-1 text-center ${glowBasedOnRank(
+        className={`${
+          rank == 1 ? "scale-105" : "hover:scale-105"
+        } bg-white duration-300 cursor-pointer transition-all flex items-center px-3 py-1.5 rounded-md justify-between pt-1 text-center ${glowBasedOnRank(
           rank
         )}`}
       >

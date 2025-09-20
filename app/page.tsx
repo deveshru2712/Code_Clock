@@ -1,5 +1,5 @@
-"use client";
 import { DefaultMultipleBarChart } from "@/components/main/Bento/Chart";
+import InstallOnVsCode from "@/components/main/Bento/InstallOnVsCode";
 import LanguageDistribution from "@/components/main/Bento/LanguageDistribution";
 import Leaderboard from "@/components/main/Bento/LeaderBoard";
 
@@ -10,12 +10,7 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="flex flex-col gap-4">
             <DefaultMultipleBarChart />
-
-            <div className="w-full h-full rounded-md p-4 shadow-sm border flex items-center justify-center">
-              <span className="text-gray-500 dark:text-gray-400">
-                Additional Content
-              </span>
-            </div>
+            <InstallOnVsCode />
           </div>
 
           <div className="flex flex-col gap-4">

@@ -4,7 +4,7 @@ import React from "react";
 
 export default function LanguageDistribution() {
   return (
-    <div className="max-w-md min-w-sm w-full border py-4 px-6 rounded-lg shadow-sm bg-white">
+    <div className="max-w-md min-w-sm bg-slate-50 w-full border py-4 px-6 rounded-2xl shadow-sm">
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-lg font-semibold text-gray-800">
           Language Distribution

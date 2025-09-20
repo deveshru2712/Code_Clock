@@ -35,7 +35,7 @@ const chartConfig = {
 
 export function DefaultMultipleBarChart() {
   return (
-    <Card>
+    <Card className="bg-slate-50">
       <CardHeader>
         <CardTitle>
           Daily Average v/s You
